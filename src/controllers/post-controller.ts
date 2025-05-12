@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import prisma from "../utils/prisma";
-import { AuthRequest } from "../middlewares/auth.middleware";
+import { AuthRequest } from "../middlewares/auth-middleware";
 
 // Get semua posts
 const getAllPosts = async (req: Request, res: Response) => {
