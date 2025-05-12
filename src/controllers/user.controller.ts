@@ -116,6 +116,17 @@ const getUserPosts = async (req: Request, res: Response) => {
 
     const posts = await prisma.post.findMany({
       where: { userId },
+      include: {
+        user: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+          },
+        },
+        comments: true,
+        likes: true,
+      },
       orderBy: {
         createdAt: "desc",
       },

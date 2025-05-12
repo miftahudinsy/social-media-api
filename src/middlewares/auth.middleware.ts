@@ -1,14 +1,14 @@
 import { Request, Response, NextFunction } from "express";
 import { verifyToken } from "../utils/jwt";
 
-export interface AuthRequest extends Request {
+interface AuthRequest extends Request {
   user?: {
     id: number;
     email: string;
   };
 }
 
-export const authMiddleware = (
+const authMiddleware = (
   req: AuthRequest,
   res: Response,
   next: NextFunction
@@ -34,3 +34,5 @@ export const authMiddleware = (
     res.status(401).json({ message: "Unauthorized" });
   }
 };
+
+export { AuthRequest, authMiddleware };
